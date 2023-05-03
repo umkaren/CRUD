@@ -10,9 +10,14 @@ function addPost() {
   let author = document.querySelector("#author").value; // get input value from HTML through DOM query.
   let tags = document.querySelector("#tags").value; // Save it as an object.
 
-
-//get local date and time
-  const timeMade = new Date().toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit'});;
+  //get local date and time
+  const timeMade = new Date().toLocaleString([], {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   console.log(timeMade);
 
   let eachPost = {
@@ -22,31 +27,30 @@ function addPost() {
     tags: tags,
   };
 
-// validates all fields must be field out for the post to be created
-if (!content || !author || !tags) {
-  alert("Please fill out all fields to post your cluck!")
-} else {
+  // validates all fields must be field out for the post to be created
+  if (!content || !author || !tags) {
+    alert("Please fill out all fields to post your cluck!");
+  } else {
+    // Get the updated todoList from local storage and push the added item to it.
+    //todoList = JSON.parse(localStorage.getItem('todoList'));
+    PostList.push(eachPost);
+    localStorage.setItem("PostList", JSON.stringify(PostList));
+    console.log(PostList);
+    // Make the input field blank after adding the item.
+    document.querySelector("#content").value = "";
+    document.querySelector("#author").value = "";
+    document.querySelector("#tags").value = "";
 
-  // Get the updated todoList from local storage and push the added item to it.
-  //todoList = JSON.parse(localStorage.getItem('todoList'));
-  PostList.push(eachPost);
-  localStorage.setItem("PostList", JSON.stringify(PostList));
-  console.log(PostList);
-  // Make the input field blank after adding the item.
-  document.querySelector("#content").value = "";
-  document.querySelector("#author").value = "";
-  document.querySelector("#tags").value = "";
-
-  // Call function to display the todoList once it gets added.
-  renderPostList();
-}
+    // Call function to display the todoList once it gets added.
+    renderPostList();
+  }
 }
 
 function renderPostList() {
   let postListHTML = ""; // initialize a variable to store HTML which will later be displayed in the page.
 
   // Looping through the array of PostList to display all the items.
-  for (let i = 0; i < PostList.length; i++) {
+  for (let i = PostList.length - 1; i >= 0; i--) {
     const eachPost = PostList[i];
     const content = eachPost.content;
     const author = eachPost.author;
@@ -94,7 +98,6 @@ function renderPostList() {
       document.querySelector("#edit-content").value = content;
       document.querySelector("#edit-tags").value = tags;
 
-
       // handle update button click
       document.querySelector("#update-post").addEventListener("click", () => {
         const newContent = document.querySelector("#edit-content").value;
@@ -118,7 +121,6 @@ function renderPostList() {
       });
     });
   });
-
 }
 
 // Event Listener for Cluck button which calls the addPost() function when clicked.
@@ -143,7 +145,9 @@ searchButton.addEventListener("click", () => {
   allPostsSection.innerHTML = "";
   let tempPosts = JSON.parse(localStorage.getItem("PostList"));
   console.log(tempPosts);
-  const result = tempPosts.filter((tempPosts) => tempPosts.tags.toLowerCase().includes(searchTag.toLowerCase()));
+  const result = tempPosts.filter((tempPosts) =>
+    tempPosts.tags.toLowerCase().includes(searchTag.toLowerCase())
+  );
 
   let searchResultsHTML = "";
   for (let i = 0; i < result.length; i++) {
@@ -170,7 +174,6 @@ searchButton.addEventListener("click", () => {
   }
 
   searchPostSection.innerHTML = searchResultsHTML;
-
 });
 
 // searchButton.addEventListener("click", () => {
@@ -189,13 +192,10 @@ searchButton.addEventListener("click", () => {
 
 //let tempPosts = JSON.parse(localStorage.getItem("PostList"));
 
-
-
 // function searchPosts(event) {
 //   const posts = PostList.filter(eachPost => eachPost.tags.some(tag => tag.toLowerCase().includes(event)))
 //   showSearch(posts)
 // }
-
 
 // function showSearch(posts) {
 //   PostList.innerHTML = ""
@@ -213,7 +213,7 @@ searchButton.addEventListener("click", () => {
 //           <button data-index="${index}" class="delete">Delete</button>
 //       </div>
 //       `
- 
+
 //       PostList.appendChild(newPost)
 //   })
 // }
