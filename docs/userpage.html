@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Required meta tags -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>ChirpChat</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Delius&family=Roboto:wght@100;300;400;500&display=swap" 
+    rel="stylesheet">
+</head>
+  
+<body>
+
+<section>
+      <!-- This container contains the sidebar
+        h-100 takes the full height of the container-->
+  <div class="container-fluid h-100">
+      <div class="row h-100 mx-2 ">
+          <div class="col-2 side-panel mt-5 leftPanel" id="green">
+              <!-- Navigation links in sidebar-->
+              <h4>
+               <div class="logoImg rounded-circle"><a href="index.html" class=""> <img src="chick1.png"  class="img-fluid d-none d-md-inline" /></a> </div></h4>
+         <br />
+              <h4> <i class="fa fa-home fa-lg mx-2"></i><a href="#" class="links d-none d-md-inline">Home</a></h4>
+              <br/>
+               <h4><i class="fa fa-hashtag mx-2" aria-hidden="true" ></i><a href="#" class="links d-none d-md-inline">Explore</a></h4>
+              <br/>
+               <h4><i class="fa fa-bell mx-2"></i><a href="#" class="links d-none d-md-inline">Alerts</a></h4>
+              <br/>
+              <h4 class=""><i class="fa fa-envelope mx-2"></i><a href="#" class="links d-none d-md-inline">Inbox</a></h4>
+              <br/>
+               <h4><i class="fa fa-user mx-2" aria-hidden="true"></i><a href="#" class="links d-none d-md-inline">Profile</a></h4>
+              <br/>
+              <h4><i class="fa fa-info mx-2" aria-hidden="true"></i><a href="#" class="links d-none d-md-inline">More</a></h4>
+              <br/>
+               <button type="submit" class="btn-sm tweetbutton createPost d-none d-md-inline" id="" >Cluck</button>  
+          </div>
+          <div class="col-7 centerPanel" style="text-align: justify;">
+            <!-- <section>
+              Hero 
+                <div >Hero</div>
+            </section>
+                 <hr> -->
+          <section id="postFormSection">
+       <h3 class="my-3">Home</h3>
+    <section>
+      <div class="d-flex flex-row justify-content-around">
+        <a href='' style="text-decoration: none; color: black;"><span class="toggle forYou">For You</span></a>
+        <a href='' style="text-decoration: none; color: black;"><span class="toggle follow inactive d-none d-md-inline">Following</span></a>
+        
+      </div>
+      <div class="tweet container">
+            <div class="text-boxes container-fluid">
+                <form class="form-inline">
+                            <div class="d-flex flex-row mb-2">
+                              <img class="profilepic d-none d-md-inline" src="cat.jpg"> 
+                              <label for="content"></label>
+                              <textarea id="content" name="content" maxlength="150" required placeholder="What's happening" class="flex-grow-1 form-control"></textarea>
+                              <br />
+                            </div>  
+                              <input type="text" id="author" name="author" required placeholder="Author" class="mb-3 form-control">
+                              <input type="text" id="tags" name="tags" required placeholder="Enter tags here" class="form-control">
+            </div> 
+            </form>
+            <div class="message-button">
+                <button type="submit" class="btn-sm tweetbutton createPost" id="createPost">Cluck</button>  
+           </div>
+        </section>
+            <hr>
+<!-- Where messages are located -->
+        <section>
+           <div class="container mb-5">
+           <h3 style="text-align: center;">Clucks</h3>
+        </section>
+        <section class="js-posts">
+
+          
+            
+  
+            <div class="post-list"></div>
+        </section>
+        <section class="js-search-results"></section>
+  </div>
+  <div class="col-3 rightPanel my-5">
+     <div class="d-flex flex-row justify-content-space ">
+             <input type="search" class="search-tag" placeholder="Search..." aria-label="Search">
+        <button class="border-0 mx-2 bg-white searchBtn"><img class="" src="search.svg"/></button>
+     </div>
+     
+     <div class="card my-3" style="width: 18rem;">
+       <div class="card-body">
+        <h4 class="card-title">Trends for you</h4>
+        <hr>
+    
+        <a href="#" class="links"><p class="card-text mb-2">#Breaking News</p></a>
+       <div class="box">
+       <a href='' class="links"><h6>Space</h6></a>
+         <p>Lunar Photography improves the discovery of the moon</p>
+       </div>
+               <a href="#" class="links"><p class="card-text mb-2">Trending in USA</p></a>
+       <div class="box">
+       <a href='' class="links"><h6>Entertainment</h6></a>
+         <p>125k tweets</p>
+       </div>
+               <a href="#" class="links"><p class="card-text mb-2">Trending WorldWide</p></a>
+       <div class="box">
+       <a href='' class="links"><h6>#International Cats Day</h6></a>
+         <p>500 people are tweeting about this</p>
+       </div>
+               <a href="#" class="links"><p class="card-text mb-2">Trending WorldWide</p></a>
+       <div class="box">
+       <a href='' class="links"><h6>#GreatestOfAllTime</h6></a>
+         <p>500k tweets</p>
+       </div>
+  </div>
+</div>
+  <div class="card my-3" style="width: 18rem;">
+       <div class="card-body">
+        <h4 class="card-title">Trends for you</h4>
+        <hr>
+      <div class="d-flex align-items-center box mb-3 container-fluid">
+      <img class="profilepic" src="cat.jpg">
+      <div class="flex-row">
+        <p class="mb-auto">UserName</p>
+        <p>@username</p>
+      </div>
+      <button class="tweetbutton btn-sm d-sm-none d-md-none d-lg-block mx-2">Follow</button>
+      <a class="" style="text-decoration: none; color: black;"> <i class="fa fa-plus d-md-block d-sm-block d-lg-none mx-4" aria-hidden="true"></i></a>
+      </div>
+            <div class="d-flex align-items-center box mb-3">
+      <img class="profilepic" src="cat.jpg">
+      <div class="flex-row">
+        <p class="mb-auto">UserName</p>
+        <p>@username</p>
+      </div>
+      <button class="tweetbutton btn-sm d-sm-none d-md-none d-lg-block mx-2">Follow</button>
+      <a class="" style="text-decoration: none; color: black;"> <i class="fa fa-plus d-md-block d-sm-block d-lg-none mx-4" aria-hidden="true"></i></a>
+      </div>
+            <div class="d-flex align-items-center box mb-3">
+      <img class="profilepic" src="cat.jpg">
+      <div class="flex-row">
+        <p class="mb-auto">UserName</p>
+        <p>@username</p>
+      </div>
+      <div class="">
+        <button class="tweetbutton  btn-sm d-sm-none d-md-none d-lg-block mx-2">Follow</button></div>
+       <a class="" style="text-decoration: none; color: black;"> <i class="fa fa-plus d-md-block d-sm-block d-lg-none mx-4" aria-hidden="true"></i></a>
+      </div>
+      </div>
+  </div>
+  
+
+  </div>
+      </div>
+  </div>
+  </section>
+  <section>
+    <div class="edit-section">
+  <div class="modal-content">
+    <h2>Update Cluck</h2>
+    <label for="edit-content">Content</label>
+    <textarea id="edit-content" name="edit-content" required></textarea>
+    <label for="edit-tags">Tags</label>
+    <input type="text" id="edit-tags" name="edit-tags" required>
+    <div>
+      <button class="btn-sm tweetbutton" id="update-post">Update</button>
+      <button class="btn-sm tweetbutton" id="cancel-edit">Cancel</button>
+    </div>
+  </div>
+</div>
+  </section>
+  <script src="crudmain.js"></script>
+    
+        <!-- Optional JavaScript -->
+       
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+<main>    
+</body>
+  </html>
