@@ -160,7 +160,7 @@ searchButton.addEventListener("click", () => {
                       <div class="card-body">
                          <div class="author-date-id">
                            <span class="author">${author}</span> <span class="date mx-2">${date}</span>
-                           <span class="id ">ID:</span></div>
+                           </div>
                            <p class="card-text card-desc">${content}</p>
                            <div class="tags container-fluid">Tags:<p class="tag-label keywords mr-3">
                             ${tags}</p></div>
