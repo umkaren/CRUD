@@ -47,6 +47,14 @@ body {
   border-left: 1px solid lightgray;
   height: 100%;
 }
+.side-panel {
+  border-right: 0.5px solid lightgray;
+  height: 100vh;
+}
+.rightPanel {
+  border-left: 0.5px solid lightgray;
+  height: 100vh;
+}
 .col-2 h5 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
@@ -72,87 +80,12 @@ body {
   }
 }
 
-.flexnav .dropdown-menu.show {
-  min-width: 100%;
-}
-
-@media screen and (max-width: 500px) {
-  .flexnav .size {
-    position: absolute;
-    display: none;
-  }
-}
-@media screen and (max-width: 500px) {
-  .flexnav .pattern {
-    position: absolute;
-    display: none;
-  }
-}
-
-.card img {
-  transition: 0.3s;
-}
-.card img:hover {
-  position: relative;
-  top: -7px;
-}
-
 .card .card-desc {
   font-family: Arial, Helvetica, sans-serif;
   color: #aeadad;
   font-size: 1em;
 }
 
-.card .price {
-  color: black;
-}
-
-.card .buy-now {
-  border-radius: 2px;
-  color: white;
-  border: none;
-  background-color: rgb(99, 179, 104);
-  transition: 0.3s;
-}
-.card .buy-now:hover {
-  opacity: 0.8;
-}
-.footer {
-  width: 100%;
-  padding-left: 10px;
-  padding-top: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #efeeee;
-}
-.copyright {
-  font-size: small;
-  text-align: center;
-  padding-bottom: 20px;
-}
-.social_media {
-  display: flex;
-  width: 200px;
-  justify-content: space-around;
-  margin: auto;
-}
-table {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-}
-th {
-  font-size: small;
-  font-weight: 700;
-  padding-left: 50px;
-  padding-right: 50px;
-  align-items: flex-start;
-}
-td {
-  font-size: smaller;
-  padding-left: 50px;
-  padding-right: 50px;
-  align-items: start;
-}
 body {
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -86,8 +86,13 @@ let searchPosts = function (search) {
 // Event Listener for Search button which calls the searchPosts() function when clicked.
 
 let searchButton = document.querySelector(".searchBtn");
+let allPostsSection = document.querySelector(".js-posts");
+let searchPostSection = document.querySelector(".js-search-results");
 
 searchButton.addEventListener("click", () => {
   let searchTag = document.querySelector(".search-tag").value;
   searchPosts(searchTag);
+  allPostsSection.innerHTML = "";
+  searchPostSection.innerHTML = `<p>${searchTag}</p>
+                                    <hr>`;
 });
