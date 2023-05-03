@@ -1,6 +1,8 @@
 let PostList = JSON.parse(localStorage.getItem("PostList") || "[]");
 console.log(PostList);
-renderPostList();
+document.addEventListener("DOMContentLoaded", () => {
+  renderPostList();
+});
 
 // addToDO() function to do items to the list.
 function addPost() {
@@ -8,8 +10,8 @@ function addPost() {
   let author = document.querySelector("#author").value; // get input value from HTML through DOM query.
   let tags = document.querySelector("#tags").value; // Save it as an object.
 
-  const date = Date.now();
-  const timeMade = new Date(date);
+
+  const timeMade = new Date().toLocaleString()
   console.log(timeMade);
 
   let eachPost = {
@@ -91,8 +93,79 @@ let searchPostSection = document.querySelector(".js-search-results");
 
 searchButton.addEventListener("click", () => {
   let searchTag = document.querySelector(".search-tag").value;
-  searchPosts(searchTag);
   allPostsSection.innerHTML = "";
-  searchPostSection.innerHTML = `<p>${searchTag}</p>
-                                    <hr>`;
+  let tempPosts = JSON.parse(localStorage.getItem("PostList"));
+  console.log(tempPosts);
+  const result = tempPosts.filter((tempPosts) => tempPosts.tags.toLowerCase().includes(searchTag.toLowerCase()));
+
+  let searchResultsHTML = "";
+  for (let i = 0; i < result.length; i++) {
+    const eachPost = result[i];
+    const content = eachPost.content;
+    const author = eachPost.author;
+    const date = eachPost.timeMade;
+    const tags = eachPost.tags;
+    const html = `<div class="card mb-3"> 
+                      <div class="card-body">
+                         <div class="author-date-id">
+                           <span class="author">${author}</span> <span class="date mx-2">${date}</span>
+                           <span class="id ">ID:</span></div>
+                           <p class="card-text card-desc">${content}</p>
+                           <div class="tags container-fluid">Tags:<p class="tag-label keywords mr-3">
+                            ${tags}</p></div>
+                           <button class="btn-sm tweetbutton js-update">Update</button>
+                          <button class="btn-sm tweetbutton js-delete">Delete</button>
+                      </div>
+                    </div>
+                         `;
+
+    searchResultsHTML += html;
+  }
+
+  searchPostSection.innerHTML = searchResultsHTML;
 });
+
+// searchButton.addEventListener("click", () => {
+//   let searchTag = document.querySelector(".search-tag").value;
+//   allPostsSection.innerHTML = "";
+//   let tempPosts = JSON.parse(localStorage.getItem("PostList"));
+//   console.log(tempPosts);
+//   const result = tempPosts.filter((tempPosts) =>
+//   tempPosts.tags.some((tag) => tag.toLowerCase().includes(searchTag))
+//   );
+
+//   searchPostSection.innerHTML = `<p>${searchTag}</p>
+//   <p>${result} </p><hr>`;
+//   console.log(result);
+// });
+
+//let tempPosts = JSON.parse(localStorage.getItem("PostList"));
+
+
+
+// function searchPosts(event) {
+//   const posts = PostList.filter(eachPost => eachPost.tags.some(tag => tag.toLowerCase().includes(event)))
+//   showSearch(posts)
+// }
+
+
+// function showSearch(posts) {
+//   PostList.innerHTML = ""
+
+//   posts.forEach((post, index) => {
+//       const newPost = document.createElement("li")
+//       newPostd.innerHTML = `
+//       <div class="author-timeMade-id"><span class="author">${post.author}</span><span class="timeMade">
+//           <p>${post.timeMade}</p></span><span class="id"><p>1</p></span></div>
+//           <p class="card-text card-desc">${post.content}</p>
+//           <ul class="tags"><p class="tag-label">Tags: </p>
+//               <li class="keywords">${post.tags}</li>
+//           </ul>
+//           <button data-index="${index}" class="edit">Edit</button>
+//           <button data-index="${index}" class="delete">Delete</button>
+//       </div>
+//       `
+ 
+//       PostList.appendChild(newPost)
+//   })
+// }
