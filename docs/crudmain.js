@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 function addPost() {
   let content = document.querySelector("#content").value; // get input value from HTML through DOM query.
   let author = document.querySelector("#author").value; // get input value from HTML through DOM query.
-  let tags = document.querySelector("#tags").value; // Save it as an object.
+  let tagsInput = document.querySelector("#tags").value; // get input values from HTML through DOM query.
+  let tags = tagsInput.split(",").map((tag) => tag.trim()); // split the input values by commas and remove empty space from each value, then saves as an array.
 
-
-  const timeMade = new Date().toLocaleString()
+  const timeMade = new Date().toLocaleString();
   console.log(timeMade);
 
   let eachPost = {
@@ -35,8 +35,12 @@ function addPost() {
   renderPostList();
 }
 
+
+
 function renderPostList() {
   let postListHTML = ""; // initialize a variable to store HTML which will later be displayed in the page.
+
+  
 
   // Looping through the array of PostList to display all the items.
   for (let i = 0; i < PostList.length; i++) {
@@ -44,15 +48,21 @@ function renderPostList() {
     const content = eachPost.content;
     const author = eachPost.author;
     const date = eachPost.timeMade;
-    const tags = eachPost.tags;
+    const tags = Array.isArray(eachPost.tags) ? eachPost.tags : []; // makes sure that the "tags" variable is an array
+    let tagsHTML = ""; // empties "tagshtml" array
+    for (let i = 0; i < tags.length; i++) { // initializes html and css for each tag
+      const tag = tags[i];
+      tagsHTML += `<div class="tag">${tag}</div>`;
+    }
     const html = `<div class="card mb-3"> 
                       <div class="card-body">
                          <div class="author-date-id">
                            <span class="author">${author}</span> <span class="date mx-2">${date}</span>
                            <span class="id ">ID:</span></div>
                            <p class="card-text card-desc">${content}</p>
-                           <div class="tags container-fluid">Tags:<p class="tag-label keywords mr-3">
-                            ${tags}</p></div>
+                            <div class="tags container-fluid">Tags:
+                              ${tagsHTML}
+                            </div>
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
                       </div>
@@ -96,7 +106,14 @@ searchButton.addEventListener("click", () => {
   allPostsSection.innerHTML = "";
   let tempPosts = JSON.parse(localStorage.getItem("PostList"));
   console.log(tempPosts);
-  const result = tempPosts.filter((tempPosts) => tempPosts.tags.toLowerCase().includes(searchTag.toLowerCase()));
+  const result = tempPosts.filter((post) => {
+    if (Array.isArray(post.tags)) {
+      return post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchTag.toLowerCase())
+      );
+    }
+    return false;
+  });
 
   let searchResultsHTML = "";
   for (let i = 0; i < result.length; i++) {
@@ -104,15 +121,21 @@ searchButton.addEventListener("click", () => {
     const content = eachPost.content;
     const author = eachPost.author;
     const date = eachPost.timeMade;
-    const tags = eachPost.tags;
+    const tags = Array.isArray(eachPost.tags) ? eachPost.tags : []; // makes sure that the "tags" variable is an array
+    let tagsHTML = ""; // empties "tagshtml" array
+    for (let i = 0; i < tags.length; i++) {  // initializes html and css for each tag
+      const tag = tags[i];
+      tagsHTML += `<div class="tag">${tag}</div>`;
+    }
     const html = `<div class="card mb-3"> 
                       <div class="card-body">
                          <div class="author-date-id">
                            <span class="author">${author}</span> <span class="date mx-2">${date}</span>
                            <span class="id ">ID:</span></div>
                            <p class="card-text card-desc">${content}</p>
-                           <div class="tags container-fluid">Tags:<p class="tag-label keywords mr-3">
-                            ${tags}</p></div>
+                           <div class="tags container-fluid">Tags:
+                           ${tagsHTML}
+                         </div>
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
                       </div>
@@ -124,48 +147,3 @@ searchButton.addEventListener("click", () => {
 
   searchPostSection.innerHTML = searchResultsHTML;
 });
-
-// searchButton.addEventListener("click", () => {
-//   let searchTag = document.querySelector(".search-tag").value;
-//   allPostsSection.innerHTML = "";
-//   let tempPosts = JSON.parse(localStorage.getItem("PostList"));
-//   console.log(tempPosts);
-//   const result = tempPosts.filter((tempPosts) =>
-//   tempPosts.tags.some((tag) => tag.toLowerCase().includes(searchTag))
-//   );
-
-//   searchPostSection.innerHTML = `<p>${searchTag}</p>
-//   <p>${result} </p><hr>`;
-//   console.log(result);
-// });
-
-//let tempPosts = JSON.parse(localStorage.getItem("PostList"));
-
-
-
-// function searchPosts(event) {
-//   const posts = PostList.filter(eachPost => eachPost.tags.some(tag => tag.toLowerCase().includes(event)))
-//   showSearch(posts)
-// }
-
-
-// function showSearch(posts) {
-//   PostList.innerHTML = ""
-
-//   posts.forEach((post, index) => {
-//       const newPost = document.createElement("li")
-//       newPostd.innerHTML = `
-//       <div class="author-timeMade-id"><span class="author">${post.author}</span><span class="timeMade">
-//           <p>${post.timeMade}</p></span><span class="id"><p>1</p></span></div>
-//           <p class="card-text card-desc">${post.content}</p>
-//           <ul class="tags"><p class="tag-label">Tags: </p>
-//               <li class="keywords">${post.tags}</li>
-//           </ul>
-//           <button data-index="${index}" class="edit">Edit</button>
-//           <button data-index="${index}" class="delete">Delete</button>
-//       </div>
-//       `
- 
-//       PostList.appendChild(newPost)
-//   })
-// }
