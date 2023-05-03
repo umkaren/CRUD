@@ -10,13 +10,9 @@ function addPost() {
   let author = document.querySelector("#author").value; // get input value from HTML through DOM query.
   let tags = document.querySelector("#tags").value; // Save it as an object.
 
-<<<<<<< HEAD
+
 //get local date and time
   const timeMade = new Date().toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit'});;
-=======
-
-  const timeMade = new Date().toLocaleString()
->>>>>>> a7a644ca67385f5ef50b3f4cffe9d12ec60a3556
   console.log(timeMade);
 
   let eachPost = {
@@ -174,9 +170,7 @@ searchButton.addEventListener("click", () => {
   }
 
   searchPostSection.innerHTML = searchResultsHTML;
-<<<<<<< HEAD
-});
-=======
+
 });
 
 // searchButton.addEventListener("click", () => {
@@ -223,4 +217,3 @@ searchButton.addEventListener("click", () => {
 //       PostList.appendChild(newPost)
 //   })
 // }
->>>>>>> a7a644ca67385f5ef50b3f4cffe9d12ec60a3556
