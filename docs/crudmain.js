@@ -10,8 +10,13 @@ function addPost() {
   let author = document.querySelector("#author").value; // get input value from HTML through DOM query.
   let tags = document.querySelector("#tags").value; // Save it as an object.
 
+<<<<<<< HEAD
 //get local date and time
   const timeMade = new Date().toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit'});;
+=======
+
+  const timeMade = new Date().toLocaleString()
+>>>>>>> a7a644ca67385f5ef50b3f4cffe9d12ec60a3556
   console.log(timeMade);
 
   let eachPost = {
@@ -169,4 +174,53 @@ searchButton.addEventListener("click", () => {
   }
 
   searchPostSection.innerHTML = searchResultsHTML;
+<<<<<<< HEAD
 });
+=======
+});
+
+// searchButton.addEventListener("click", () => {
+//   let searchTag = document.querySelector(".search-tag").value;
+//   allPostsSection.innerHTML = "";
+//   let tempPosts = JSON.parse(localStorage.getItem("PostList"));
+//   console.log(tempPosts);
+//   const result = tempPosts.filter((tempPosts) =>
+//   tempPosts.tags.some((tag) => tag.toLowerCase().includes(searchTag))
+//   );
+
+//   searchPostSection.innerHTML = `<p>${searchTag}</p>
+//   <p>${result} </p><hr>`;
+//   console.log(result);
+// });
+
+//let tempPosts = JSON.parse(localStorage.getItem("PostList"));
+
+
+
+// function searchPosts(event) {
+//   const posts = PostList.filter(eachPost => eachPost.tags.some(tag => tag.toLowerCase().includes(event)))
+//   showSearch(posts)
+// }
+
+
+// function showSearch(posts) {
+//   PostList.innerHTML = ""
+
+//   posts.forEach((post, index) => {
+//       const newPost = document.createElement("li")
+//       newPostd.innerHTML = `
+//       <div class="author-timeMade-id"><span class="author">${post.author}</span><span class="timeMade">
+//           <p>${post.timeMade}</p></span><span class="id"><p>1</p></span></div>
+//           <p class="card-text card-desc">${post.content}</p>
+//           <ul class="tags"><p class="tag-label">Tags: </p>
+//               <li class="keywords">${post.tags}</li>
+//           </ul>
+//           <button data-index="${index}" class="edit">Edit</button>
+//           <button data-index="${index}" class="delete">Delete</button>
+//       </div>
+//       `
+ 
+//       PostList.appendChild(newPost)
+//   })
+// }
+>>>>>>> a7a644ca67385f5ef50b3f4cffe9d12ec60a3556
