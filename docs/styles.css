@@ -2,6 +2,51 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.logoImg {
+  border: 1px transparent;
+  box-shadow: 0px 0px 1px 1px #da5552;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.toggle {
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+
+  font-weight: bold;
+}
+
+.links {
+  text-decoration: none;
+  color: gray !important;
+}
+
+.links:hover {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+.forYou {
+  border-bottom: 5px solid #da5552;
+}
+
+.forYou.follow.inactive {
+  border-bottom: 5px solid transparent;
+}
+.follow {
+  border-bottom: 5px solid #da5552;
+}
+.follow.inactive {
+  border-bottom: 5px solid transparent;
+}
+
+.centerPanel {
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  height: 100%;
+}
 .col-2 h5 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
@@ -20,7 +65,8 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-  .side-panel {
+  .rightPanel,
+  .logoImg {
     position: absolute;
     display: none;
   }
@@ -130,7 +176,7 @@ body {
 
 .tweetbutton {
   color: white;
-  background-color: rgb(29, 155, 240);
+  background-color: #da5552;
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -166,7 +212,8 @@ body {
   align-self: center;
 } */
 
-.author-date-id, .tags {
+.author-date-id,
+.tags {
   display: flex;
   flex-direction: row;
   margin: ;
@@ -177,8 +224,17 @@ ul {
 }
 
 .keywords {
-  margin-left: 2rem;
-  padding: 0.5rem;
-  background-color: #DA5552;
-  color: white;
+  margin-left: 0.5rem;
+  padding: 0.1rem 1rem;
+  border: 0.5px solid #da5552;
+
+  color: black;
+  border-radius: 0.5rem;
+}
+
+.box {
+  padding-left: 1rem;
+  box-shadow: 0px 0px 2px 1px rgba(67, 66, 66, 0.1);
+  background-color: rgb(249, 241, 241);
+  border-radius: 0.5rem;
 }
