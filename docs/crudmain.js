@@ -24,6 +24,7 @@ function addPost() {
     content: content,
     timeMade: timeMade,
     tags: tags,
+    clicked: false,
   };
 
   // validates all fields must be field out for the post to be created
@@ -51,8 +52,10 @@ function renderPostList() {
   for (let i = 0; i < PostList.length; i++) {
     const eachPost = PostList[i];
     const content = eachPost.content;
-    const author = eachPost.author;
+    //const author = eachPost.author;
     const date = eachPost.timeMade;
+    const clicked = eachPost.clicked;
+    let heartPic = clicked ? "heartRed.png" : "heartEmpty.png";
     const tags = Array.isArray(eachPost.tags) ? eachPost.tags : []; // makes sure that the "tags" variable is an array
     let tagsHTML = ""; // empties "tagshtml" array
     for (let i = 0; i < tags.length; i++) {
@@ -60,6 +63,7 @@ function renderPostList() {
       const tag = tags[i];
       tagsHTML += `<div class="tag">${tag}</div>`;
     }
+
     const html = `<div class="card mb-3"> 
                       <div class="card-body">
                          <div class="author-date-id">
@@ -72,6 +76,7 @@ function renderPostList() {
                             </div>
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
+                           <image class="heartIcon" src="${heartPic}" alt="empty heart icon" />
                       </div>
                     </div>
                          `;
@@ -87,6 +92,17 @@ function renderPostList() {
       PostList.splice(index, 1); // Deletes the item with index 'index'
       localStorage.setItem("PostList", JSON.stringify(PostList)); // Update local Storage .
       renderPostList(); // Call the function to display the changes.
+    });
+  });
+
+  //Event Listener to like an image. The value of clicked is changed from false to true.
+  document.querySelectorAll(".heartIcon").forEach((heart, index) => {
+    heart.addEventListener("click", () => {
+      const eachPost = PostList[index];
+      const clicked = eachPost.clicked;
+      PostList[index].clicked = !clicked;
+      localStorage.setItem("PostList", JSON.stringify(PostList));
+      renderPostList();
     });
   });
 
@@ -164,6 +180,8 @@ searchButton.addEventListener("click", () => {
     // const author = eachPost.author;
     const date = eachPost.timeMade;
     //const tags = eachPost.tags;
+    const clicked = eachPost.clicked;
+    let heartPic = clicked ? "heartRed.png" : "heartEmpty.png";
 
     const tags = eachPost.tags;
     // makes sure that the "tags" variable is an array
@@ -187,6 +205,7 @@ searchButton.addEventListener("click", () => {
                             ${tagsHTML}
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
+                            <image class="heartIcon" src="${heartPic}" alt="empty heart icon" />
                       </div>
                     </div>
                          `;
