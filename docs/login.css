@@ -11,9 +11,8 @@ body {
 .left {
   height: 100vh;
   width: 100%;
-  background-color: #e66465;
-  background-image: linear-gradient(#f59f9f, rgb(249, 149, 149) 70.71%);
-  border: 1px solid transparent;
+  background: linear-gradient(220deg, #485696, #d489c2) !important;
+  border: 1px none transparent;
   border-radius: 2rem 0 0 2rem;
 }
 
@@ -33,13 +32,13 @@ body {
 .submit {
   border: none !important;
   border-radius: 1rem;
-  background-color: #f59f9f !important;
+  background-color: #d489c2;
   transition: 0.2s;
   margin-left: 0.4rem;
 }
 
 .submit:hover {
-  background-color: #f59f9f;
+  background-color: #d673bf;
   color: white;
 }
 
