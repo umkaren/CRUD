@@ -123,20 +123,20 @@ function renderPostList() {
       // handle update button click
       document.querySelector("#update-post").addEventListener("click", () => {
         const newContent = document.querySelector("#edit-content").value;
-        const newTags = document.querySelector("#edit-tags").value;
+        const newTags = document.querySelector("#edit-tags").value.split(",");
         if (!newContent || !newTags) {
           alert("Please fill out all fields to complete your cluck!");
         } else {
           // update the post in local storage
           PostList[index].content = newContent;
-          PostList[index].tags = newTags;
+          PostList[index].tags = newTags.map((tag) => tag.trim());
           localStorage.setItem("PostList", JSON.stringify(PostList));
+
           // close edit section and re-render the post list
           editSection.style.display = "none";
           renderPostList();
         }
       });
-
       // handle cancel button click
       document.querySelector("#cancel-edit").addEventListener("click", () => {
         editSection.style.display = "none";
