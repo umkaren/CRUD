@@ -28,7 +28,7 @@ function addPost() {
   };
 
   // validates all fields must be field out for the post to be created
-  if (!content || !tags) {
+  if (!content || !tagsInput) {
     alert("Please fill out all fields to post your cluck!");
   } else {
     // Get the updated todoList from local storage and push the added item to it.
