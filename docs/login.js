@@ -8,7 +8,7 @@ function validate(event) {
   if (email === "admin@email.com" && pwd === "abcd") {
     console.log("Login successful");
     error.innerHTML = "";
-    window.location.replace("/CRUD/docs/userpage.html");
+    window.location.replace("userpage.html");
   } else {
     error.innerHTML = "Please check your login info";
     console.log("Login unsuccessful");
