@@ -5,10 +5,14 @@ function validate(event) {
   const error = document.querySelector(".invalid");
   const homePage = document.querySelector(".nextPage");
 
-  if (email === "admin@email.com" && pwd === "abcd") {
+  if (email === "CatOverlord@gmail.com" && pwd === "abcd") {
     console.log("Login successful");
     error.innerHTML = "";
     window.location.replace("userpage.html");
+  } else if (email === "minion2@gmail.com" && pwd === "abcd") {
+    console.log("Login successful");
+    error.innerHTML = "";
+    window.location.replace("userpage2.html");
   } else {
     error.innerHTML = "Please check your login info";
     console.log("Login unsuccessful");
