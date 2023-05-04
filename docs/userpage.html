@@ -10,6 +10,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>ChirpChat</title>
+    <!-- external CSS Sheet -->
     <link rel="stylesheet" href="styles.css">
     <!-- Bootstrap CSS -->
     <link
@@ -24,14 +25,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Delius&family=Roboto:wght@100;300;400;500&display=swap" 
     rel="stylesheet">
+
 </head>
   
 <body>
-
-<section>
       <!-- This container contains the sidebar
         h-100 takes the full height of the container-->
-  <div class="container-fluid h-100">
       <div class="row h-100 mx-2 ">
           <div class="col-2 side-panel mt-5 leftPanel" id="green">
               <!-- Navigation links in sidebar-->
@@ -59,7 +58,7 @@
             </section>
                  <hr> -->
           <section id="postFormSection">
-       <h3 class="my-3">Home</h3>
+       <h3 class="my-3 text-center">Home</h3>
     <section>
       <div class="d-flex flex-row justify-content-around">
         <a href='' style="text-decoration: none; color: black;"><span class="toggle forYou">For You</span></a>
@@ -72,11 +71,11 @@
                             <div class="d-flex flex-row mb-2">
                               <img class="profilepic d-none d-md-inline" src="cat.jpg"> 
                               <label for="content"></label>
-                              <textarea id="content" name="content" maxlength="150" required placeholder="What's happening" class="flex-grow-1 form-control"></textarea>
+                              <textarea id="content" name="content" maxlength="150" placeholder="What's happening" class="flex-grow-1 form-control"></textarea>
                               <br />
                             </div>  
-                              <input type="text" id="author" name="author" required placeholder="Author" class="mb-3 form-control">
-                              <input type="text" id="tags" name="tags" required placeholder="Enter tags here" class="form-control">
+                              <!-- <input type="text" id="author" name="author" placeholder="Author" class="mb-3 form-control"> -->
+                              <input type="text" id="tags" name="tags" maxlength="40" placeholder="Enter tags here (separated by comma)" class="form-control">
             </div> 
             </form>
             <div class="message-button">
@@ -90,18 +89,18 @@
            <h3 style="text-align: center;">Clucks</h3>
         </section>
         <section class="js-posts">
+                  <!-- feed will populate in here -->
 
           
-            
-  
+      
             <div class="post-list"></div>
         </section>
         <section class="js-search-results"></section>
   </div>
   <div class="col-3 rightPanel my-5">
      <div class="d-flex flex-row justify-content-space ">
-             <input type="search" class="search-tag" placeholder="Search..." aria-label="Search">
-        <button class="border-0 mx-2 bg-white searchBtn"><img class="" src="search.svg"/></button>
+             <input type="search" class="search-tag rounded" placeholder="Search..." aria-label="Search">
+        <button class="border-0 mx-2  rounded bg-white searchBtn"><img class="" src="search.svg"/></button>
      </div>
      
      <div class="card my-3" style="width: 18rem;">
@@ -133,31 +132,31 @@
 </div>
   <div class="card my-3" style="width: 18rem;">
        <div class="card-body">
-        <h4 class="card-title">Trends for you</h4>
+        <h4 class="card-title">People to follow</h4>
         <hr>
-      <div class="d-flex align-items-center box mb-3 container-fluid">
+      <div class="d-flex align-items-center box mb-3 cat-box">
       <img class="profilepic" src="cat.jpg">
       <div class="flex-row">
-        <p class="mb-auto">UserName</p>
-        <p>@username</p>
+        <p class="mb-auto">Minion 1</p>
+        <p>@minion1</p>
       </div>
       <button class="tweetbutton btn-sm d-sm-none d-md-none d-lg-block mx-2">Follow</button>
       <a class="" style="text-decoration: none; color: black;"> <i class="fa fa-plus d-md-block d-sm-block d-lg-none mx-4" aria-hidden="true"></i></a>
       </div>
-            <div class="d-flex align-items-center box mb-3">
+            <div class="d-flex align-items-center box mb-3 cat-box">
       <img class="profilepic" src="cat.jpg">
       <div class="flex-row">
-        <p class="mb-auto">UserName</p>
-        <p>@username</p>
+        <p class="mb-auto">Minion 2</p>
+        <p>@minion2</p>
       </div>
       <button class="tweetbutton btn-sm d-sm-none d-md-none d-lg-block mx-2">Follow</button>
       <a class="" style="text-decoration: none; color: black;"> <i class="fa fa-plus d-md-block d-sm-block d-lg-none mx-4" aria-hidden="true"></i></a>
       </div>
-            <div class="d-flex align-items-center box mb-3">
+            <div class="d-flex align-items-center box mb-3 cat-box">
       <img class="profilepic" src="cat.jpg">
       <div class="flex-row">
-        <p class="mb-auto">UserName</p>
-        <p>@username</p>
+        <p class="mb-auto">Minion 3</p>
+        <p>@minion3</p>
       </div>
       <div class="">
         <button class="tweetbutton  btn-sm d-sm-none d-md-none d-lg-block mx-2">Follow</button></div>
@@ -169,12 +168,13 @@
 
   </div>
       </div>
-  </div>
-  </section>
-  <section>
+
+
+  <!-- Edit dialog box -->
+  <!-- <div class="overlay"> -->
     <div class="edit-section">
   <div class="modal-content">
-    <h2>Update Cluck</h2>
+    <h2>Edit Cluck</h2>
     <label for="edit-content">Content</label>
     <textarea id="edit-content" name="edit-content" required></textarea>
     <label for="edit-tags">Tags</label>
@@ -185,7 +185,7 @@
     </div>
   </div>
 </div>
-  </section>
+<!-- </div> -->
   <script src="crudmain.js"></script>
     
         <!-- Optional JavaScript -->

@@ -1,10 +1,11 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(220deg, #485696, #d489c2) !important;
 }
 
 .logoImg {
   border: 1px transparent;
-  box-shadow: 0px 0px 1px 1px #da5552;
+  box-shadow: 0px 0px 1px 1px #d489c2;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -20,7 +21,7 @@ body {
 
 .links {
   text-decoration: none;
-  color: gray !important;
+  color: black !important;
 }
 
 .links:hover {
@@ -29,14 +30,14 @@ body {
 }
 
 .forYou {
-  border-bottom: 5px solid #da5552;
+  border-bottom: 5px solid #d489c2;
 }
 
 .forYou.follow.inactive {
   border-bottom: 5px solid transparent;
 }
 .follow {
-  border-bottom: 5px solid #da5552;
+  border-bottom: 5px solid #d489c2;
 }
 .follow.inactive {
   border-bottom: 5px solid transparent;
@@ -55,6 +56,7 @@ body {
   border-left: 0.5px solid lightgray;
   height: 100vh;
 }
+
 .col-2 h5 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
@@ -78,6 +80,14 @@ body {
     position: absolute;
     display: none;
   }
+ 
+
+}
+
+@media screen and (max-width: 500px) {
+  .centerPanel {
+    width: 80% !important;
+  }
 }
 
 .card .card-desc {
@@ -88,6 +98,7 @@ body {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
 }
 
 .profilepic {
@@ -109,7 +120,7 @@ body {
 
 .tweetbutton {
   color: white;
-  background-color: #da5552;
+  background-color:#d489c2;
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -119,6 +130,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   vertical-align: middle;
+  margin: 0.5rem;
 }
 .tweet {
   margin-top: 30px;
@@ -128,37 +140,47 @@ body {
   padding-right: 12px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-}
-
-.tweet {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  background-color: white;
+
 }
 
-.text-boxes {
+/* .text-boxes {
   display: flex;
   flex-direction: column;
-}
-
-/* .message-button {
-  align-self: center;
 } */
 
-.author-date-id,
-.tags {
+.author-date-id, .tags {
   display: flex;
   flex-direction: row;
 }
 
-ul {
-  list-style-type: none;
+.author-date-id {
+  justify-content: space-between;
 }
+
+
+.tag{
+  margin-left: 0.5rem;
+  padding: 0.1rem 1rem;
+  border: 2px solid #d489c2;
+
+  color: black;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  overflow: auto;
+}
+
 
 .keywords {
   margin-left: 0.5rem;
   padding: 0.1rem 1rem;
-  border: 0.5px solid #da5552;
+  border: 0.5px solid #d489c2;
 
   color: black;
   border-radius: 0.5rem;
@@ -167,10 +189,41 @@ ul {
 .box {
   padding-left: 1rem;
   box-shadow: 0px 0px 2px 1px rgba(67, 66, 66, 0.1);
-  background-color: rgb(249, 241, 241);
+  background-color: #eef1ff;
   border-radius: 0.5rem;
+}
+
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* semi-transparent gray */
+  z-index: 9999;
 }
 
 .edit-section {
   display: none;
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.modal-content {
+  padding: 3rem;
 }
+
+.cat-box {
+  justify-content: space-between;
+}
+
+.searchbtn{
+  border:none;
+  border-radius:0.5rem;
+}
+
