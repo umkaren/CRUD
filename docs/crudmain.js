@@ -25,6 +25,7 @@ function addPost() {
     timeMade: timeMade,
     author: author,
     tags: tags,
+    clicked: false,
   };
 
   // validates all fields must be field out for the post to be created
@@ -56,6 +57,8 @@ function renderPostList() {
     const author = eachPost.author;
     const date = eachPost.timeMade;
     const tags = eachPost.tags;
+    const clicked = eachPost.clicked;
+    let heartPic = clicked ? "heartRed.png" : "heartEmpty.png";
     const html = `<div class="card mb-3"> 
                       <div class="card-body">
                          <div class="author-date-id">
@@ -66,6 +69,7 @@ function renderPostList() {
                             ${tags}</p></div>
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
+                          <image class="heartIcon" src="${heartPic}" alt="empty heart icon" />
                       </div>
                     </div>
                          `;
@@ -83,6 +87,18 @@ function renderPostList() {
       renderPostList(); // Call the function to display the changes.
     });
   });
+
+  //Event Listener to like an image. The value of clicked is changed from false to true.
+  document.querySelectorAll(".heartIcon").forEach((heart, index) => {
+    heart.addEventListener("click", () => {
+      const eachPost = PostList[index];
+      const clicked = eachPost.clicked;
+      PostList[index].clicked = !clicked;
+      localStorage.setItem("PostList", JSON.stringify(PostList));
+      renderPostList();
+    })
+  })
+
 
   // Event Listener for edit button to update the post content.
   document.querySelectorAll(".js-update").forEach((updateButton, index) => {
@@ -156,6 +172,8 @@ searchButton.addEventListener("click", () => {
     const author = eachPost.author;
     const date = eachPost.timeMade;
     const tags = eachPost.tags;
+    const clicked = eachPost.clicked;
+    let heartPic = clicked ? "heartRed.png" : "heartEmpty.png";
     const html = `<div class="card mb-3"> 
                       <div class="card-body">
                          <div class="author-date-id">
@@ -166,6 +184,7 @@ searchButton.addEventListener("click", () => {
                             ${tags}</p></div>
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
+                          <image class="heartIcon" src="${heartPic}" alt="empty heart icon" />
                       </div>
                     </div>
                          `;
