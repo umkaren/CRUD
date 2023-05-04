@@ -161,16 +161,21 @@ searchButton.addEventListener("click", () => {
   for (let i = 0; i < result.length; i++) {
     const eachPost = result[i];
     const content = eachPost.content;
-    const author = eachPost.author;
+    // const author = eachPost.author;
     const date = eachPost.timeMade;
     //const tags = eachPost.tags;
 
-    const tags = Array.isArray(eachPost.tags) ? eachPost.tags : []; // makes sure that the "tags" variable is an array
-    let tagsHTML = ""; // empties "tagshtml" array
+    const tags = eachPost.tags;
+    // makes sure that the "tags" variable is an array
+    console.log("tags", tags);
+    let tagsHTML = []; // empties "tagshtml" array
     for (let i = 0; i < tags.length; i++) {
       // initializes html and css for each tag
       const tag = tags[i];
+      console.log(tag);
+
       tagsHTML += `<div class="tag">${tag}</div>`;
+      console.log(tagsHTML);
     }
     const html = `<div class="card mb-3"> 
                       <div class="card-body">
@@ -178,14 +183,14 @@ searchButton.addEventListener("click", () => {
                          <span class="profile-pic"><img class="profilepic d-none d-md-inline" src="cat.jpg"><p>@CatOverlord</p></span>
                             <span class="date mx-2 d-none d-md-inline">${date}</span>
                            <p class="card-text card-desc">${content}</p>
-                           <div class="tags container-fluid">Tags:<p class="tag-label keywords mr-3">
-                            ${tagsHTML}</p></div>
+                          
+                            ${tagsHTML}
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
                       </div>
                     </div>
                          `;
-    console.log(html);
+
     searchResultsHTML += html;
   }
 

@@ -80,8 +80,6 @@ body {
     position: absolute;
     display: none;
   }
- 
-
 }
 
 @media screen and (max-width: 500px) {
@@ -120,7 +118,7 @@ body {
 
 .tweetbutton {
   color: white;
-  background-color:#d489c2;
+  background-color: #d489c2;
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -144,7 +142,6 @@ body {
   flex-direction: row;
   justify-content: space-around;
   background-color: white;
-
 }
 
 /* .text-boxes {
@@ -152,7 +149,8 @@ body {
   flex-direction: column;
 } */
 
-.author-date-id, .tags {
+.author-date-id,
+.tags {
   display: flex;
   flex-direction: row;
 }
@@ -161,12 +159,10 @@ body {
   justify-content: space-between;
 }
 
-
-.tag{
+.tag {
   margin-left: 0.5rem;
   padding: 0.1rem 1rem;
   border: 2px solid #d489c2;
-
   color: black;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
@@ -175,7 +171,6 @@ body {
 .tags {
   overflow: auto;
 }
-
 
 .keywords {
   margin-left: 0.5rem;
@@ -193,7 +188,6 @@ body {
   border-radius: 0.5rem;
 }
 
-
 .overlay {
   display: none;
   position: fixed;
@@ -201,18 +195,18 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5); /* semi-transparent gray */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent gray */
   z-index: 9999;
 }
 
 .edit-section {
   display: none;
-    position: fixed;
-    z-index: 999;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+  position: fixed;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .modal-content {
   padding: 3rem;
@@ -222,8 +216,7 @@ body {
   justify-content: space-between;
 }
 
-.searchbtn{
-  border:none;
-  border-radius:0.5rem;
+.searchbtn {
+  border: none;
+  border-radius: 0.5rem;
 }
-
