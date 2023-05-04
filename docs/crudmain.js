@@ -215,3 +215,9 @@ searchButton.addEventListener("click", () => {
 
   searchPostSection.innerHTML = searchResultsHTML;
 });
+
+function signOut(event) {
+  event.preventDefault();
+
+  window.location.replace("index.html");
+}
