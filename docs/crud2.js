@@ -89,7 +89,7 @@ function renderPostList() {
   document.querySelectorAll(".js-delete").forEach((deleteButton, index) => {
     deleteButton.addEventListener("click", () => {
       let postDelete = JSON.parse(localStorage.getItem("PostList1")); // get the Updated todoList from Local storage.
-      PostList.splice(index, 1); // Deletes the item with index 'index'
+      PostList1.splice(index, 1); // Deletes the item with index 'index'
       localStorage.setItem("PostList1", JSON.stringify(PostList1)); // Update local Storage .
       renderPostList(); // Call the function to display the changes.
     });
