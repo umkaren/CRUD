@@ -214,6 +214,9 @@ searchButton.addEventListener("click", () => {
   }
 
   searchPostSection.innerHTML = searchResultsHTML;
+  if (!searchResultsHTML) {
+    searchPostSection.innerHTML = `<h3 style="text-align:center";>No Clucks found!</h3>`;
+  }
 });
 
 function signOut(event) {
