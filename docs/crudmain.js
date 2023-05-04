@@ -150,7 +150,6 @@ let searchPosts = function (search) {
   console.log("Search button clicked", search);
 };
 
-
 // Event Listener for Search button which calls the searchPosts() function when clicked.
 
 let searchButton = document.querySelector(".searchBtn");
