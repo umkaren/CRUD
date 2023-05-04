@@ -10,9 +10,14 @@ function addPost() {
   let tagsInput = document.querySelector("#tags").value; // get input values from HTML through DOM query.
   let tags = tagsInput.split(",").map((tag) => tag.trim()); // split the input values by commas and remove empty space from each value, then saves as an array.
 
-
-//get local date and time
-  const timeMade = new Date().toLocaleString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit'});;
+  //get local date and time
+  const timeMade = new Date().toLocaleString([], {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   console.log(timeMade);
 
   let eachPost = {
@@ -21,23 +26,22 @@ function addPost() {
     tags: tags,
   };
 
-// validates all fields must be field out for the post to be created
-if (!content || !tags) {
-  alert("Please fill out all fields to post your cluck!")
-} else {
+  // validates all fields must be field out for the post to be created
+  if (!content || !tags) {
+    alert("Please fill out all fields to post your cluck!");
+  } else {
+    // Get the updated todoList from local storage and push the added item to it.
+    //todoList = JSON.parse(localStorage.getItem('todoList'));
+    PostList.push(eachPost);
+    localStorage.setItem("PostList", JSON.stringify(PostList));
+    console.log(PostList);
+    // Make the input field blank after adding the item.
+    document.querySelector("#content").value = "";
+    document.querySelector("#tags").value = "";
 
-  // Get the updated todoList from local storage and push the added item to it.
-  //todoList = JSON.parse(localStorage.getItem('todoList'));
-  PostList.push(eachPost);
-  localStorage.setItem("PostList", JSON.stringify(PostList));
-  console.log(PostList);
-  // Make the input field blank after adding the item.
-  document.querySelector("#content").value = "";
-  document.querySelector("#tags").value = "";
-
-  // Call function to display the todoList once it gets added.
-  renderPostList();
-}
+    // Call function to display the todoList once it gets added.
+    renderPostList();
+  }
 }
 
 function renderPostList() {
@@ -51,7 +55,8 @@ function renderPostList() {
     const date = eachPost.timeMade;
     const tags = Array.isArray(eachPost.tags) ? eachPost.tags : []; // makes sure that the "tags" variable is an array
     let tagsHTML = ""; // empties "tagshtml" array
-    for (let i = 0; i < tags.length; i++) { // initializes html and css for each tag
+    for (let i = 0; i < tags.length; i++) {
+      // initializes html and css for each tag
       const tag = tags[i];
       tagsHTML += `<div class="tag">${tag}</div>`;
     }
@@ -99,7 +104,6 @@ function renderPostList() {
       document.querySelector("#edit-content").value = content;
       document.querySelector("#edit-tags").value = tags;
 
-
       // handle update button click
       document.querySelector("#update-post").addEventListener("click", () => {
         const newContent = document.querySelector("#edit-content").value;
@@ -123,7 +127,6 @@ function renderPostList() {
       });
     });
   });
-
 }
 
 // Event Listener for Cluck button which calls the addPost() function when clicked.
@@ -147,8 +150,12 @@ searchButton.addEventListener("click", () => {
   let searchTag = document.querySelector(".search-tag").value;
   allPostsSection.innerHTML = "";
   let tempPosts = JSON.parse(localStorage.getItem("PostList"));
-  console.log(tempPosts);
-  const result = tempPosts.filter((tempPosts) => tempPosts.tags.toLowerCase().includes(searchTag.toLowerCase()));
+  console.log("search", tempPosts);
+  console.log(searchTag);
+  const result = tempPosts.filter((tempPosts) =>
+    tempPosts.tags.includes(searchTag.toLowerCase())
+  );
+  console.log(result);
 
   let searchResultsHTML = "";
   for (let i = 0; i < result.length; i++) {
@@ -156,23 +163,31 @@ searchButton.addEventListener("click", () => {
     const content = eachPost.content;
     const author = eachPost.author;
     const date = eachPost.timeMade;
-    const tags = eachPost.tags;
+    //const tags = eachPost.tags;
+
+    const tags = Array.isArray(eachPost.tags) ? eachPost.tags : []; // makes sure that the "tags" variable is an array
+    let tagsHTML = ""; // empties "tagshtml" array
+    for (let i = 0; i < tags.length; i++) {
+      // initializes html and css for each tag
+      const tag = tags[i];
+      tagsHTML += `<div class="tag">${tag}</div>`;
+    }
     const html = `<div class="card mb-3"> 
                       <div class="card-body">
                          <div class="author-date-id">
-                           <span class="author">${author}</span> <span class="date mx-2 d-none d-md-inline">${date}</span>
+                         <span class="profile-pic"><img class="profilepic d-none d-md-inline" src="cat.jpg"><p>@CatOverlord</p></span>
+                            <span class="date mx-2 d-none d-md-inline">${date}</span>
                            <p class="card-text card-desc">${content}</p>
                            <div class="tags container-fluid">Tags:<p class="tag-label keywords mr-3">
-                            ${tags}</p></div>
+                            ${tagsHTML}</p></div>
                            <button class="btn-sm tweetbutton js-update">Update</button>
                           <button class="btn-sm tweetbutton js-delete">Delete</button>
                       </div>
                     </div>
                          `;
-
+    console.log(html);
     searchResultsHTML += html;
   }
 
   searchPostSection.innerHTML = searchResultsHTML;
-
 });
